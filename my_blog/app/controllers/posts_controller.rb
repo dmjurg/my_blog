@@ -1,21 +1,31 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!
   def index
-    @posts = Post.all
-  end
-
-  def new
+    if current_user
+      @posts = current_user.posts
+    else
+      @posts = Post.all
+    end
     @post = Post.new
-  end
-
-  def create
-    @post = Post.create(post_params)
-    redirect_to(@post)
   end
 
   def show
     @post = Post.find(params[:id])
   end
+
+  def create
+    if current_user
+      @post = current_user.posts.new(post_params)
+    else
+      @post = Post.new
+    end
+    if @post.save
+      redirect_to(@post)
+    end  
+  end
+
+
 
   def edit
     @post = Post.find(params[:id])
@@ -31,7 +41,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to "/posts"
-  end    
+  end
 
   private
   def post_params
