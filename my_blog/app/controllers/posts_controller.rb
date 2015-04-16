@@ -8,6 +8,13 @@ class PostsController < ApplicationController
       @posts = Post.all
     end
     @post = Post.new
+    @session_test = session[:test]
+    @recent_post = session[:recent_post]
+    session.delete(:test)
+  end
+
+  def new
+    @post = Post.new
   end
 
   def show
@@ -21,11 +28,10 @@ class PostsController < ApplicationController
       @post = Post.new
     end
     if @post.save
-      redirect_to(@post)
-    end  
+      session[:recent_post] = @post.content
+      redirect_to @post
+    end
   end
-
-
 
   def edit
     @post = Post.find(params[:id])
@@ -41,6 +47,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to "/posts"
+  end
+
+  def testing_session
+    session[:test] = "test"
+    @session_test = session[:test]
   end
 
   private

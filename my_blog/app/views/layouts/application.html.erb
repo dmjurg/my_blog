@@ -5,16 +5,24 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Neucha|Rochester' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <h1>what a gran<strong>d c</strong>ity!</h1>
+  <header>
+    <h1>what a gran<strong>d c</strong>ity!</h1>
+    <h2>a blog about the district of columbia</h2>
+  </header>
+  <ul>
+    <li><a class="nav" href= '/posts'>all posts</a></li>
+    <li><a class="nav" href= '/posts/new'>add a new post</a></li>
+    <li><a class="nav" href= '/users/sign_in'>sign in</a></li>
+  </ul>
 
   <%= yield %>
 
 </body>
 <footer>
-  <ul>
-    <li><a href= '/posts'>all posts</a></li>
-    <li><a href= '/posts/new'>add a new post</a></li>
+
 </footer>
 </html>

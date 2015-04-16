@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception  
 end
 
 # new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
@@ -29,9 +29,4 @@ end
 #                  DELETE /posts/:id(.:format)           posts#destroy
 #             tags GET    /tags(.:format)                tags#index
 #                  POST   /tags(.:format)                tags#create
-#          new_tag GET    /tags/new(.:format)            tags#new
-#         edit_tag GET    /tags/:id/edit(.:format)       tags#edit
-#              tag GET    /tags/:id(.:format)            tags#show
-#                  PATCH  /tags/:id(.:format)            tags#update
-#                  PUT    /tags/:id(.:format)            tags#update
-#                  DELETE /tags/:id(.:format)            tags#destroy
+#
