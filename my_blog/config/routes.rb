@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
+  root 'posts#index'
 
   devise_for :users
+  get 'posts/testing_session', to: 'posts#testing_session'
+
+  # resources :users do
+    resources :posts
+  # end
   # get '/' do
   #   erb :welcome
   # end

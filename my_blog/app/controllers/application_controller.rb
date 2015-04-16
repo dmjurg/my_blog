@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception  
+  # protect_from_forgery with: :exception  
 end
 
 # new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
