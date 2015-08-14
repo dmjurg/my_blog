@@ -1,16 +1,7 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!
   def index
-    # if current_user
-      @posts = current_user.posts
-    # else
-    #   @posts = Post.all
-    # end
-    # @post = Post.new
-    # @session_test = session[:test]
-    # @recent_post = session[:recent_post]
-    # session.delete(:test)
+    @posts = Post.all
   end
 
   def new
@@ -26,13 +17,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    # if current_user
-      @post = current_user.posts.new(post_params)
-    # else
-    #   @post = Post.new
-    # end
+    @post = Post.new
     if @post.save
-      # session[:recent_post] = @post.content
       redirect_to @post
     else
       render 'new'
@@ -53,11 +39,6 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-
-  # def testing_session
-  #   session[:test] = "test"
-  #   @session_test = session[:test]
-  # end
 
   private
   def post_params
